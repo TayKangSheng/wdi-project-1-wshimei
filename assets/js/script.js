@@ -15,21 +15,53 @@ $(document).ready(function () {
     var disappearInterval = 2000
 
     if (score === 10) {
-      appearInterval = 750
-      disappearInterval = 1500
+      appearInterval = 800
+      disappearInterval = 1300
     } else if (score === 25) {
-      appearInterval = 375
-      disappearInterval = 500
+      appearInterval = 300
+      disappearInterval = 550
     }
 
     setInterval(function () {
+      console.log('mole appear interval')
       moleAppear(randomNum)
     }, appearInterval)
 
     setInterval(function () {
+      console.log('mole disappear interval')
       moleDisappear(randomNum)
       randomNum = Math.floor(Math.random() * 7)
     }, disappearInterval)
+  })
+
+  $(document).keypress(function (e) {
+    if (e.key === randomMole.parentNode.id) {
+      randomMole.classList.add('hidden')
+      whacked.classList.remove('hidden')
+
+      score += 1
+      scoreboard.textContent = 'Score: ' + score
+      if (score === 10) {
+        level.textContent = 'Level: 2'
+      }
+      if (score === 25) {
+        level.textContent = 'Level: 3'
+      }
+      if (score === 50) {
+        alert('WAY TO GO! You scored 50 points! PLAY AGAIN!')
+        reset()
+      }
+
+    } else if (e.key !== randomMole.parentNode.id) {
+      mistake += 1
+      if (mistake === 3) {
+        alert('Too bad! You scored ' + score + ' points. Try again to score 50 points!')
+        reset()
+      }
+    }
+    setTimeout(function () {
+      whacked.classList.add('hidden')
+    }, 300)
   })
 
   function moleAppear (i) {
@@ -40,38 +72,8 @@ $(document).ready(function () {
 
   function moleDisappear (i) {
     randomMole = moles[i]
-    whacked = ouch[i]
     randomMole.classList.add('hidden')
   }
-
-  $(document).keypress(function (e) {
-    if (e.key === randomMole.parentNode.id) {
-      randomMole.classList.add('hidden')
-      whacked.classList.remove('hidden')
-      score += 1
-      scoreboard.textContent = 'Score: ' + score
-      if (score === 10) {
-        level.textContent = 'Level: 2'
-      }
-      if (score === 25) {
-        level.textContent = 'Level: 3'
-      }
-      if (score === 45) {
-        alert('WAY TO GO! PLAY AGAIN!')
-        reset()
-      }
-      setTimeout(function () {
-        whacked.classList.add('hidden')
-      }, 300)
-    } else if (e.key !== randomMole.parentNode.id) {
-      mistake += 1
-      if (mistake === 3) {
-        alert('Too bad! You scored ' + score + ' points. Try again to score 50 points!')
-        score = 0
-        reset()
-      }
-    }
-  })
 
   function reset () {
     score = 0
