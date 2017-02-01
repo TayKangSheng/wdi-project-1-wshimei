@@ -35,14 +35,12 @@ $(document).ready(function () {
   })
 
   function moleAppear (i) {
-    console.log('moleAppear setTimeout')
     randomMole = moles[i]
     whacked = ouch[i]
     randomMole.classList.remove('hidden')
   }
 
   function moleDisappear (i) {
-    console.log('moleDisappear setTimeout')
     randomMole = moles[i]
     whacked = ouch[i]
     randomMole.classList.add('hidden')
@@ -61,6 +59,7 @@ $(document).ready(function () {
       }, 300)
     } else if (e.key !== randomMole.parentNode.id) {
       mistake += 1
+      console.log(mistake)
       gameLost()
     }
   })
