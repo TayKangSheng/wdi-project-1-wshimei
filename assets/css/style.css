@@ -1,0 +1,47 @@
+* {
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 80px;
+}
+
+p {
+  margin: 0 0 60px 0;
+}
+
+.holes {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  display: inline-flex;
+  background-color: rgb(29, 14, 2);
+}
+
+.mole {
+  width: 130px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.mole.hidden {
+  display: none;
+}
+
+.ouch {
+  width: 100px;
+  height: 100px;
+  display: inline-flex;
+}
+
+.ouch.hidden {
+  display: none;
+}
+
+button {
+  width: 150px;
+  height: 30px;
+  margin: 30px auto;
+}
