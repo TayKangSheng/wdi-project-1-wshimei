@@ -66,7 +66,7 @@ $(document).ready(function () {
     } else if (e.key !== randomMole.parentNode.id) {
       mistake += 1
       if (mistake === 3) {
-        alert('Too bad, try again?')
+        alert('Too bad! You scored ' + score + ' points. Try again to score 50 points!')
         score = 0
         reset()
       }
