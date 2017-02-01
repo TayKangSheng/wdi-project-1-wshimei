@@ -11,17 +11,15 @@ $(document).ready(function () {
 
   startBtn.addEventListener('click', function () {
     var randomNum = Math.floor(Math.random() * 7)
-    var appearInterval = 1500
-    var disappearInterval = 2500
+    var appearInterval = 1000
+    var disappearInterval = 2000
 
     if (score === 10) {
       appearInterval = 750
-      disappearInterval = 1400
-      level.innerHTML = 'Level: 2'
+      disappearInterval = 1500
     } else if (score === 25) {
       appearInterval = 375
       disappearInterval = 500
-      level.innerHTML = 'Level: 3'
     }
 
     setInterval(function () {
@@ -52,32 +50,28 @@ $(document).ready(function () {
       whacked.classList.remove('hidden')
       score += 1
       scoreboard.textContent = 'Score: ' + score
-      gameOver()
-
+      if (score === 10) {
+        level.textContent = 'Level: 2'
+      }
+      if (score === 25) {
+        level.textContent = 'Level: 3'
+      }
+      if (score === 45) {
+        alert('WAY TO GO! PLAY AGAIN!')
+        reset()
+      }
       setTimeout(function () {
         whacked.classList.add('hidden')
       }, 300)
     } else if (e.key !== randomMole.parentNode.id) {
       mistake += 1
-      console.log(mistake)
-      gameLost()
+      if (mistake === 3) {
+        alert('Too bad, try again?')
+        score = 0
+        reset()
+      }
     }
   })
-
-  function gameLost () {
-    if (mistake === 3) {
-      alert('Too bad, try again?')
-      score = 0
-      reset()
-    }
-  }
-
-  function gameOver () {
-    if (score === 50) {
-      alert('WAY TO GO! PLAY AGAIN!')
-      reset()
-    }
-  }
 
   function reset () {
     score = 0
