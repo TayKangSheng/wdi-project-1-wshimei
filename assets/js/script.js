@@ -67,8 +67,6 @@ $(document).ready(function () {
   })
 
   function moleAppear (i) {
-    clickable = true
-    console.log(clickable)
     randomMole = moles[i]
     whacked = ouch[i]
     // if mole already appear don't do anything
