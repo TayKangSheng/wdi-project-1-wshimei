@@ -10,7 +10,7 @@ Live Demo: https://wdi-sg.github.io/wdi-project-1-wshimei/
 - JavaScript
 - jQuery
 
-#Authors
+#Author
 Shimei Wong - Initial work
 
 #Acknowledgments
