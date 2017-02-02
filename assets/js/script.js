@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  var sfx = new Audio('./SFX/punch2.mp3')
   var moles = document.querySelectorAll('.mole')
   var ouch = document.querySelectorAll('.ouch')
   var startBtn = document.querySelector('button')
@@ -35,6 +36,7 @@ $(document).ready(function () {
 
   $(document).keypress(function (e) {
     if (e.key === randomMole.parentNode.id) {
+      sfx.play()
       randomMole.classList.add('hidden')
       if (clickable === true) {
         clickable = false
@@ -58,15 +60,18 @@ $(document).ready(function () {
         reset()
       }
     } else if (e.key !== randomMole.parentNode.id) {
-      mistake += 1
-      if (mistake === 3) {
-        alert('Too bad! You scored ' + score + ' points. Try again to score 50 points!')
-        reset()
+      if (e.key === 't' || e.key === 'y' || e.key === 'u' || e.key === 'f' || e.key === 'g' || e.key === 'h' || e.key === 'j') {
+        mistake += 1
+        if (mistake === 3) {
+          alert('Too bad! You scored ' + score + ' points. Try again to score 50 points!')
+          reset()
+        }
       }
     }
   })
 
   function moleAppear (i) {
+    clickable = true
     randomMole = moles[i]
     whacked = ouch[i]
     // if mole already appear don't do anything
@@ -88,7 +93,6 @@ $(document).ready(function () {
 
   function reset () {
     score = 0
-    mistake = 0
     level.textContent = 'Level: 1'
     document.location.href = ''
   }
