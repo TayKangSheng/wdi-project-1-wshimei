@@ -92,6 +92,6 @@ $(document).ready(function () {
     score = 0
     mistake = 0
     level.textContent = 'Level: 1'
-    document.location.href = ''
+    document.location.href =g ''
   }
 })
