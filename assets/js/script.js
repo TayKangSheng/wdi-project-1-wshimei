@@ -13,16 +13,18 @@ $(document).ready(function () {
 
   startBtn.addEventListener('click', function () {
     var randomNum = Math.floor(Math.random() * 7)
-    var appearInterval = 2000
-    var disappearInterval = 4000
+    var appearInterval = 1000
+    var disappearInterval = 2000
 
-    if (score > 10) {
-      appearInterval = 1000
-      disappearInterval = Math.floor((Math.random() * (3000 - 2000)) + 2000)
-    } else if (score > 25) {
-      appearInterval = 500
-      disappearInterval = Math.floor((Math.random() * (2000 - 1000)) + 1000)
-    }
+    // if (score === 10) {
+    //   appearInterval = 700
+    //   disappearInterval = Math.floor((Math.random() * (2800 - 1400)) + 1400)
+    // }
+    //
+    // if (score === 25) {
+    //   appearInterval = 300
+    //   disappearInterval = Math.floor((Math.random() * (1200 - 600)) + 600)
+    // }
 
     setInterval(function () {
       moleAppear(randomNum)
