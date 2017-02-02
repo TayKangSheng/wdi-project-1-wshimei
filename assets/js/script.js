@@ -16,10 +16,10 @@ $(document).ready(function () {
 
     if (score > 10) {
       appearInterval = 500
-      disappearInterval = ath.floor((Math.random() * (2000 - 1000)) + 1000)
+      disappearInterval = Math.floor((Math.random() * (2000 - 1000)) + 1000)
     } else if (score > 25) {
       appearInterval = 250
-      disappearInterval = ath.floor((Math.random() * (1000 - 500)) + 500)
+      disappearInterval = Math.floor((Math.random() * (1000 - 500)) + 500)
     }
 
     setInterval(function () {
@@ -66,9 +66,6 @@ $(document).ready(function () {
     randomMole = moles[i]
     whacked = ouch[i]
     // if mole already appear don't do anything
-    if (!whacked.classList.contains('hidden')) {
-      whacked.classList.add('hidden')
-    }
     if (!randomMole.classList.contains('hidden')) {
       return
     }
@@ -79,9 +76,9 @@ $(document).ready(function () {
     randomMole = moles[i]
     whacked = ouch[i]
     // if mole already disappear don't do anything
-    // if (randomMole.classList.contains('hidden')) {
-    //   return
-    // }
+    if (randomMole.classList.contains('hidden')) {
+      return
+    }
     randomMole.classList.add('hidden')
   }
 
