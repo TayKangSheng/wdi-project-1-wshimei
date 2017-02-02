@@ -12,23 +12,21 @@ $(document).ready(function () {
   startBtn.addEventListener('click', function () {
     var randomNum = Math.floor(Math.random() * 7)
     var appearInterval = 1000
-    var disappearInterval = 2000
+    var disappearInterval = Math.floor(Math.random() * 2000)
 
-    if (score === 10) {
-      appearInterval = 800
-      disappearInterval = 1300
-    } else if (score === 25) {
-      appearInterval = 300
-      disappearInterval = 550
+    if (score > 10) {
+      appearInterval = 500
+      disappearInterval = Math.floor(Math.random() * 1000)
+    } else if (score > 25) {
+      appearInterval = 250
+      disappearInterval = Math.floor(Math.random() * 500)
     }
 
     setInterval(function () {
-      console.log('mole appear interval')
       moleAppear(randomNum)
     }, appearInterval)
 
     setInterval(function () {
-      console.log('mole disappear interval')
       moleDisappear(randomNum)
       randomNum = Math.floor(Math.random() * 7)
     }, disappearInterval)
@@ -38,6 +36,9 @@ $(document).ready(function () {
     if (e.key === randomMole.parentNode.id) {
       randomMole.classList.add('hidden')
       whacked.classList.remove('hidden')
+      setTimeout(function () {
+        whacked.classList.add('hidden')
+      }, 300)
 
       score += 1
       scoreboard.textContent = 'Score: ' + score
@@ -51,7 +52,6 @@ $(document).ready(function () {
         alert('WAY TO GO! You scored 50 points! PLAY AGAIN!')
         reset()
       }
-
     } else if (e.key !== randomMole.parentNode.id) {
       mistake += 1
       if (mistake === 3) {
@@ -59,20 +59,28 @@ $(document).ready(function () {
         reset()
       }
     }
-    setTimeout(function () {
-      whacked.classList.add('hidden')
-    }, 400)
   })
 
   function moleAppear (i) {
     randomMole = moles[i]
     whacked = ouch[i]
+    // if mole already appear don't do anything
+    if (!whacked.classList.contains('hidden')) {
+      whacked.classList.add('hidden')
+    }
+    if (!randomMole.classList.contains('hidden')) {
+      return
+    }
     randomMole.classList.remove('hidden')
   }
 
   function moleDisappear (i) {
     randomMole = moles[i]
     whacked = ouch[i]
+    // if mole already disappear don't do anything
+    // if (randomMole.classList.contains('hidden')) {
+    //   return
+    // }
     randomMole.classList.add('hidden')
   }
 
