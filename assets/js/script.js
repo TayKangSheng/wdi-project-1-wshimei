@@ -6,20 +6,21 @@ $(document).ready(function () {
   var level = document.querySelector('.level')
   var score = 0
   var mistake = 0
+  var clickable = false
   var randomMole
   var whacked
 
   startBtn.addEventListener('click', function () {
     var randomNum = Math.floor(Math.random() * 7)
-    var appearInterval = 1000
-    var disappearInterval = Math.floor((Math.random() * (3000 - 1500)) + 1500)
+    var appearInterval = 2000
+    var disappearInterval = 4000
 
     if (score > 10) {
+      appearInterval = 1000
+      disappearInterval = Math.floor((Math.random() * (3000 - 2000)) + 2000)
+    } else if (score > 25) {
       appearInterval = 500
       disappearInterval = Math.floor((Math.random() * (2000 - 1000)) + 1000)
-    } else if (score > 25) {
-      appearInterval = 250
-      disappearInterval = Math.floor((Math.random() * (1000 - 500)) + 500)
     }
 
     setInterval(function () {
@@ -35,13 +36,16 @@ $(document).ready(function () {
   $(document).keypress(function (e) {
     if (e.key === randomMole.parentNode.id) {
       randomMole.classList.add('hidden')
-      whacked.classList.remove('hidden')
-      var clearWhack = whacked
-      setTimeout(function () {
-        clearWhack.classList.add('hidden')
-      }, 400)
+      if (clickable === true) {
+        clickable = false
+        score += 1
+        whacked.classList.remove('hidden')
+        var clearWhack = whacked
+        setTimeout(function () {
+          clearWhack.classList.add('hidden')
+        }, 400)
+      }
 
-      score += 1
       scoreboard.textContent = 'Score: ' + score
       if (score === 10) {
         level.textContent = 'Level: 2'
@@ -63,6 +67,8 @@ $(document).ready(function () {
   })
 
   function moleAppear (i) {
+    clickable = true
+    console.log(clickable)
     randomMole = moles[i]
     whacked = ouch[i]
     // if mole already appear don't do anything

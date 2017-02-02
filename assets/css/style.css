@@ -30,7 +30,7 @@ p {
 button {
   width: 150px;
   height: 45px;
-  margin: 20px auto;
+  margin: 20px 0 30px 0;
   font-size: 20px;
   font-family: 'Indie Flower', cursive;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.90);
@@ -101,7 +101,7 @@ button:hover {
   width: 100px;
   height: 100px;
   position: absolute;
-  bottom: 75px;
+  bottom: 50px;
   z-index: 6;
 }
 
