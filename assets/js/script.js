@@ -12,14 +12,14 @@ $(document).ready(function () {
   startBtn.addEventListener('click', function () {
     var randomNum = Math.floor(Math.random() * 7)
     var appearInterval = 1000
-    var disappearInterval = Math.floor(Math.random() * 2000)
+    var disappearInterval = Math.floor((Math.random() * (3000 - 1500)) + 1500)
 
     if (score > 10) {
       appearInterval = 500
-      disappearInterval = Math.floor(Math.random() * 1000)
+      disappearInterval = ath.floor((Math.random() * (2000 - 1000)) + 1000)
     } else if (score > 25) {
       appearInterval = 250
-      disappearInterval = Math.floor(Math.random() * 500)
+      disappearInterval = ath.floor((Math.random() * (1000 - 500)) + 500)
     }
 
     setInterval(function () {
@@ -36,9 +36,10 @@ $(document).ready(function () {
     if (e.key === randomMole.parentNode.id) {
       randomMole.classList.add('hidden')
       whacked.classList.remove('hidden')
+      var clearWhack = whacked
       setTimeout(function () {
-        whacked.classList.add('hidden')
-      }, 300)
+        clearWhack.classList.add('hidden')
+      }, 400)
 
       score += 1
       scoreboard.textContent = 'Score: ' + score
