@@ -49,24 +49,42 @@ p {
   color: rgb(233, 232, 231);
 }
 
+.holeBackground {
+  width: 140px;
+  height: 140px;
+  z-index: 4;
+  float: left;
+  position: absolute;
+  border-radius: 100px / 50px;
+  overflow-x: hidden;
+  bottom: 2px;
+  left: 0;
+  /*background-color: white;*/
+}
+
 .mole {
   width: 130px;
   height: 120px;
   display: inline-flex;
-  /*align-items: flex-start;*/
-  position: absolute;
+  position: absolute;;
   bottom: 0;
+  left: 1px;
+  transition: bottom 0.5s linear;
+  z-index: 5;
 }
 
 .mole.hidden {
-  display: none;
+  /*display: none;*/
+  transition: bottom 0.3s linear;
+	bottom: -90%;
 }
 
 .ouch {
   width: 100px;
   height: 100px;
   position: absolute;
-  bottom: 0;
+  bottom: 75px;
+  z-index: 6;
 }
 
 .ouch.hidden {

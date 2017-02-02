@@ -61,7 +61,7 @@ $(document).ready(function () {
     }
     setTimeout(function () {
       whacked.classList.add('hidden')
-    }, 300)
+    }, 400)
   })
 
   function moleAppear (i) {
@@ -72,6 +72,7 @@ $(document).ready(function () {
 
   function moleDisappear (i) {
     randomMole = moles[i]
+    whacked = ouch[i]
     randomMole.classList.add('hidden')
   }
 
