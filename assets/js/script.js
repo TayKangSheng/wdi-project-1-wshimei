@@ -90,7 +90,8 @@ $(document).ready(function () {
 
   function reset () {
     score = 0
+    mistake = 0
     level.textContent = 'Level: 1'
-    window.location.reload(false)
+    document.location.href = ''
   }
 })
