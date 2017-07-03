@@ -4,22 +4,24 @@
 var game = {
   startBtn: $('.startBtn'),
   moles: $('.mole'),
-  randomNum: Math.floor(Math.random() * 7),
+
+  gRandomNum: function () {
+    Math.floor(Math.random() * 7)
+  },
 
   startGame: function () {
     console.log(this.moleAppear)
     this.startBtn.on('click', () => {
       setInterval(this.moleAppear.bind(this), 1000)
+      this.gRandomNum()
     })
   },
 
   moleAppear: function () {
-    var randomMole = this.moles[this.randomNum]
-    if (randomMole.classList.contains('hidden')) {
-      randomMole.classList.remove('hidden')
-    } else {
-      randomMole.classList.add('hidden')
-    }
+    var randomNum = Math.floor(Math.random() * 7)
+    var randomMole = this.moles[randomNum]
+    console.log(randomNum);
+    randomMole.classList.toggle('hidden')
   }
 
 }
