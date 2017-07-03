@@ -44,7 +44,7 @@ button:hover {
   background-color: rgb(210, 244, 139);
 }
 
-.score, .level {
+.scoreboard, .levelCounter {
   margin: 5px 0 0 0;
   font-family: 'Leckerli One', cursive;
   font-size: 40px;

@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <title>Whack-a-mole</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Bahiana|Boogaloo|Coming+Soon|Indie+Flower|Permanent+Marker" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Fontdiner+Swanky|Gochi+Hand|Leckerli+One|Skranji" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <title>Whack-a-mole</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bahiana|Boogaloo|Coming+Soon|Indie+Flower|Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fontdiner+Swanky|Gochi+Hand|Leckerli+One|Skranji" rel="stylesheet">
+  </head>
 
-<body background="./images/13784-cartoon-farm-1920x1080-digital-art-wallpaper.jpg" alt="Farm Background">
-  <h1>Whack a mole</h1>
-  <p>Use the corresponding keys on your <br> <strong>keyboard</strong> <br> to whack the pesty moles!</p>
+  <body background="./images/13784-cartoon-farm-1920x1080-digital-art-wallpaper.jpg" alt="Farm Background">
+    <h1>Whack a mole</h1>
+    <p>Use the corresponding keys on your <br> <strong>keyboard</strong> <br> to whack the pesty moles!</p>
 
-  <div class="start">
-    <button type="button" name="button" onclick="this.disabled=true">Start Game!</button>
-  </div>
-
-  <div class="level">
-    Level: 1
-  </div>
-
-  <div class="score">
-    Score: 0
-  </div>
-
-  <div class="land">
-
-    <div class="holes">T
-      <div class="holeBackground" id="t">
-        <img class="mole hidden" src="./images/mole2.png" alt="Mole">
-      </div>
-      <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+    <div class="startBtn">
+      <button type="button" name="button" onclick="this.disabled=true">Start Game!</button>
     </div>
 
-    <div class="holes">Y
-      <div class="holeBackground" id="y">
-        <img class="mole hidden" src="./images/mole2.png" alt="Mole">
-      </div>
-      <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+    <div class="levelCounter">
+      Level: 1
     </div>
 
-    <div class="holes">U
-      <div class="holeBackground" id="u">
-        <img class="mole hidden" src="./images/mole2.png" alt="Mole">
-      </div>
-      <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+    <div class="scoreboard">
+      Score: 0
     </div>
 
-    <br>
-    <div class="holes">F
-      <div class="holeBackground" id="f">
-        <img class="mole hidden" src="./images/mole2.png" alt="Mole">
+    <div class="land">
+
+      <div class="holes">T
+        <div class="holeBackground" id="t">
+          <img class="mole hidden" src="./images/mole2.png" alt="Mole">
+        </div>
+        <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
       </div>
-      <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+
+      <div class="holes">Y
+        <div class="holeBackground" id="y">
+          <img class="mole hidden" src="./images/mole2.png" alt="Mole">
+        </div>
+        <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+      </div>
+
+      <div class="holes">U
+        <div class="holeBackground" id="u">
+          <img class="mole hidden" src="./images/mole2.png" alt="Mole">
+        </div>
+        <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+      </div>
+
+      <br>
+      <div class="holes">F
+        <div class="holeBackground" id="f">
+          <img class="mole hidden" src="./images/mole2.png" alt="Mole">
+        </div>
+        <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+      </div>
+
+      <div class="holes">G
+        <div class="holeBackground" id="g">
+          <img class="mole hidden" src="./images/mole2.png" alt="Mole">
+        </div>
+        <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+      </div>
+
+      <div class="holes">H
+        <div class="holeBackground" id="h">
+          <img class="mole hidden" src="./images/mole2.png" alt="Mole">
+        </div>
+        <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+      </div>
+
+      <div class="holes">J
+        <div class="holeBackground" id="j">
+          <img class="mole hidden" src="./images/mole2.png" alt="Mole">
+        </div>
+        <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
+      </div>
     </div>
 
-    <div class="holes">G
-      <div class="holeBackground" id="g">
-        <img class="mole hidden" src="./images/mole2.png" alt="Mole">
-      </div>
-      <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
-    </div>
 
-    <div class="holes">H
-      <div class="holeBackground" id="h">
-        <img class="mole hidden" src="./images/mole2.png" alt="Mole">
-      </div>
-      <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="./assets/js/newscript.js" charset="utf-8"></script>
 
-    <div class="holes">J
-      <div class="holeBackground" id="j">
-        <img class="mole hidden" src="./images/mole2.png" alt="Mole">
-      </div>
-      <img class="ouch hidden" src="./images/ouch.png" alt="ouch">
-    </div>
-  </div>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
-  <script src="./assets/js/script.js" charset="utf-8"></script>
-
-</body>
+  </body>
 
 </html>

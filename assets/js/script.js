@@ -3,8 +3,8 @@ $(document).ready(function () {
   var moles = document.querySelectorAll('.mole')
   var ouch = document.querySelectorAll('.ouch')
   var startBtn = document.querySelector('button')
-  var scoreboard = document.querySelector('.score')
-  var level = document.querySelector('.level')
+  var scoreboard = document.querySelector('.scoreboard')
+  var level = document.querySelector('.levelCounter')
   var score = 0
   var mistake = 0
   var clickable = false
@@ -16,15 +16,15 @@ $(document).ready(function () {
     var appearInterval = 1000
     var disappearInterval = 2000
 
-    // if (score === 10) {
-    //   appearInterval = 700
-    //   disappearInterval = Math.floor((Math.random() * (2800 - 1400)) + 1400)
-    // }
-    //
-    // if (score === 25) {
-    //   appearInterval = 300
-    //   disappearInterval = Math.floor((Math.random() * (1200 - 600)) + 600)
-    // }
+    if (score === 10) {
+      appearInterval = 700
+      disappearInterval = Math.floor((Math.random() * (2800 - 1400)) + 1400)
+    }
+
+    if (score === 25) {
+      appearInterval = 300
+      disappearInterval = Math.floor((Math.random() * (1200 - 600)) + 600)
+    }
 
     setInterval(function () {
       moleAppear(randomNum)
