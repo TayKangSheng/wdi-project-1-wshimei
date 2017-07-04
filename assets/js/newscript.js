@@ -1,29 +1,38 @@
-
 /* global $ */
 
 var game = {
   startBtn: $('.startBtn'),
-  moles: $('.mole'),
-
-  gRandomNum: function () {
-    Math.floor(Math.random() * 7)
-  },
+  mole: $('.mole'),
+  holes: ['t', 'y', 'u', 'f', 'g', 'h', 'j'],
+  scoreboard: $('.scoreboard'),
+  score: 0,
+  clickable: true,
 
   startGame: function () {
-    console.log(this.moleAppear)
     this.startBtn.on('click', () => {
-      setInterval(this.moleAppear.bind(this), 1000)
-      this.gRandomNum()
+      setInterval(this.gRandomMole.bind(this), 1000)
     })
   },
 
-  moleAppear: function () {
-    var randomNum = Math.floor(Math.random() * 7)
-    var randomMole = this.moles[randomNum]
-    console.log(randomNum);
-    randomMole.classList.toggle('hidden')
-  }
+  gRandomMole: function () {
+    var index = Math.floor(Math.random() * 7)
+    var hole = $('#' + this.holes[index])
 
+    this.mole.toggleClass('hidden')
+    this.mole.appendTo(hole)
+
+    $(document).keypress((e) => {
+      if (e.key === this.holes[index]) {
+        if (this.clickable === true) {
+          this.clickable = false
+          this.score ++
+          this.scoreboard.text('Score: ' + this.score)
+          console.log(this.clickable)
+        }
+      }
+    })
+    this.clickable = true
+  }
 }
 
 $(document).ready(game.startGame())
