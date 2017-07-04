@@ -11,7 +11,7 @@ var game = {
 
   startGame: function () {
     this.startBtn.on('click', () => {
-      setInterval(this.gRandomMole.bind(this), 1000)
+      setInterval(this.gRandomMole.bind(this), 3000)
     })
   },
 
@@ -21,17 +21,20 @@ var game = {
 
     this.mole.toggleClass('hidden')
     this.mole.appendTo(hole)
-    this.checkScore(index)
+    this.checkScore(this.holes[index])
+    console.log('this holes[index]: ' + this.holes[index])
   },
 
-  checkScore: function (holeIndex) {
+  checkScore: function (h) {
     $(document).keypress((e) => {
-      if (e.key === this.holes[holeIndex]) {
+      console.log('h: ' + h)
+      console.log('e.key: ' + e.key)
+      if (e.key === h) {
         if (this.clickable === true) {
           this.clickable = false
           this.score ++
           this.scoreboard.text('Score: ' + this.score)
-          console.log(this.clickable)
+          // console.log(this.clickable)
         }
       // } else {
       //   this.mistake ++
@@ -41,7 +44,6 @@ var game = {
       }
     })
     this.clickable = true
-    console.log(this.clickable)
   }
 }
 
