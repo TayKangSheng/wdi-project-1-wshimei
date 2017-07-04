@@ -21,26 +21,27 @@ var game = {
 
     this.mole.toggleClass('hidden')
     this.mole.appendTo(hole)
-    this.checkScore()
+    this.checkScore(index)
   },
 
-  checkScore: function () {
+  checkScore: function (holeIndex) {
     $(document).keypress((e) => {
-      if (e.key === this.holes[index]) {
+      if (e.key === this.holes[holeIndex]) {
         if (this.clickable === true) {
           this.clickable = false
           this.score ++
           this.scoreboard.text('Score: ' + this.score)
           console.log(this.clickable)
         }
-      } else {
-        this.mistake ++
-        if (this.mistake === 3) {
-          alert('gameover')
-        }
+      // } else {
+      //   this.mistake ++
+      //   if (this.mistake === 5) {
+      //     alert('gameover')
+        // }
       }
     })
     this.clickable = true
+    console.log(this.clickable)
   }
 }
 
