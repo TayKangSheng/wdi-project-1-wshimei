@@ -3,9 +3,10 @@
 var game = {
   startBtn: $('.startBtn'),
   mole: $('.mole'),
-  holes: ['t', 'y', 'u', 'f', 'g', 'h', 'j'],
   scoreboard: $('.scoreboard'),
+  holes: ['t', 'y', 'u', 'f', 'g', 'h', 'j'],
   score: 0,
+  mistake: 0,
   clickable: true,
 
   startGame: function () {
@@ -20,7 +21,10 @@ var game = {
 
     this.mole.toggleClass('hidden')
     this.mole.appendTo(hole)
+    this.checkScore()
+  },
 
+  checkScore: function () {
     $(document).keypress((e) => {
       if (e.key === this.holes[index]) {
         if (this.clickable === true) {
@@ -28,6 +32,11 @@ var game = {
           this.score ++
           this.scoreboard.text('Score: ' + this.score)
           console.log(this.clickable)
+        }
+      } else {
+        this.mistake ++
+        if (this.mistake === 3) {
+          alert('gameover')
         }
       }
     })
