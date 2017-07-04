@@ -1,3 +1,5 @@
+/* global $ Audio alert */
+
 $(document).ready(function () {
   var sfx = new Audio('./SFX/punch2.mp3')
   var moles = document.querySelectorAll('.mole')
@@ -94,8 +96,8 @@ $(document).ready(function () {
   }
 
   function reset () {
-    score = 0
-    level.textContent = 'Level: 1'
+    // score = 0
+    // level.textContent = 'Level: 1'
     document.location.href = ''
   }
 })

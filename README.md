@@ -2,11 +2,11 @@
 Help the farmer get rid of the crop destroying moles!
 Whack the mole by hitting on the corresponding letters on your keyboard!
 
-Live Demo: https://wdi-sg.github.io/wdi-project-1-wshimei/
+Live: https://wshimei.github.io/wdi-project-1-wshimei/
 
 # Built With
-- CSS3
 - HTML
+- CSS3
 - JavaScript
 - jQuery
 
