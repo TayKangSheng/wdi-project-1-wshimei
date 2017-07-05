@@ -1,19 +1,22 @@
-/* global $ */
+/* global $ alert */
 
 var game = {
   startBtn: $('.startBtn'),
   mole: $('.mole'),
   scoreboard: $('.scoreboard'),
   holes: $('.holeBackground'),
+  levelCounter: $('.levelCounter'),
+  // ouch: $('.ouch'),
   score: 0,
   mistake: 0,
   clickable: true,
   $hole: '',
+  timer: 500,
 
   startGame: function () {
     this.startBtn.on('click', () => {
-      setInterval(this.gRandomMole.bind(this), 1000)
-      // this.checkScore(this.holes)
+      setInterval(this.gRandomMole.bind(this), this.timer)
+      console.log(this.timer)
     })
   },
 
@@ -23,59 +26,33 @@ var game = {
 
     this.mole.toggleClass('hidden')
     this.mole.appendTo(this.$hole)
+    this.clickable = true
   },
 
   checkScore: function (holeId) {
-    console.log(this.$hole.attr('id'))
-    console.log(holeId)
-    // console.log($clickedHole.find('img').length)
-    if (this.$hole.attr('id') === holeId) {
-      if (this.clickable === true) {
+    if (this.clickable === true) {
+      if (this.$hole.attr('id') === holeId) {
         this.clickable = false
-        console.log(true)
+        this.score ++
+        this.scoreboard.text('Score: ' + this.score)
+        this.levelUp()
+        // this.ouch.removeClass('.hidden')
+        // this.ouch.appendTo(this.$hole)
+      } else {
+        this.mistake ++
+        if (this.mistake === 5) {
+          alert('Total Score: ' + this.score + '! Try again!')
+        }
       }
-      this.score ++
-      this.scoreboard.text('Score: ' + this.score)
-    } else {
-      this.mistake ++
-      if (this.mistake === 5) {
-        alert('gameover')
-      }
-      console.log(false)
+    }
+  },
+
+  levelUp: function () {
+    if (this.score > 3) {
+      this.timer = 0
+      console.log('levelUp timer: ' + this.timer)
     }
   }
-    // loop every h_arr
-    // $(document).keypress((event) => {
-    //   for (var i = 0; i < hole.length; i++) {
-    //     console.log('holeId: ' + $(this.holes[i]).attr('id'))
-    //     console.log('e.key: ' + event.key)
-    //   // console.log(i)
-    //     if (event.key === $(this.holes[i]).attr('id')) {
-    //     } else {
-    //       return false
-    //     }
-    //   }
-    // })
-
-    // check if that element with id = holeId has mole in it
-
-    // $(document).keypress((event) => {
-    //
-    //   if (event.key === hole[i]) {
-    //     if (this.clickable === true) {
-    //       this.clickable = false
-    //       this.score ++
-    //       this.scoreboard.text('Score: ' + this.score)
-    //         // console.log(this.clickable)
-    //     }
-    //       // } else {
-    //       //   this.mistake ++
-    //       //   if (this.mistake === 5) {
-    //       //     alert('gameover')
-    //       // }
-    //   }
-    // })
-    // this.clickable = true
 }
 
 $(document).ready(function () {
