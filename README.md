@@ -12,13 +12,13 @@ My first ever coding project created with JavaScript was modeled after a handhel
 ## First Version
 First version was created as a project while attending GA's Web Development Immersive Course. It was super buggy and the code were all over the place.
 
-> ![First Version](images/first-version.png "First Version")
+> ![First Version](images/first-version.png "First Version")<br>
 DOM here
 
 ## Refactored
 Refactored during my time as teaching assistant for GA's WDI-11. Tried out OOP here. Not perfect, but definitely better than the first version.
 
->![Refactored Version](images/refactored.png)
+>![Refactored Version](images/refactored.png)<br>
 Refactored to OOP and jQuery!
 
 #### Challenges Faced
