@@ -11,6 +11,7 @@ var game = {
   clickable: true,
   $hole: '',
   timer: 1500,
+  moleAppearTime: 300,
 
   startGame: function () {
     this.startBtn.on('click', () => {
@@ -20,13 +21,15 @@ var game = {
 
   startTimeOut: function () {
     setTimeout(this.gRandomMole.bind(this), this.timer)
-    this.removeMole()
+    if (!this.mole.hasClass('hidden')) {
+      this.removeMole()
+    }
   },
 
   removeMole: function () {
     setTimeout(() => {
       this.mole.addClass('hidden animated slideInDown')
-    }, this.timer - 500)
+    }, this.timer - this.moleAppearTime)
   },
 
   gRandomMole: function () {
@@ -44,9 +47,10 @@ var game = {
     this.startTimeOut()
   },
 
-  checkScore: function (holeId) {
+  checkScore: function (keyPress) {
     if (this.clickable === true) {
-      if (this.$hole.attr('id') === holeId) {
+      console.log(this.$hole.attr('id'))
+      if (this.$hole.attr('id') === keyPress) {
         this.clickable = false
         this.ouch.removeClass('hidden')
         this.mole.addClass('hidden animated slideInDown')
@@ -55,8 +59,9 @@ var game = {
         this.scoreboard.text('Score: ' + this.score)
       } else {
         this.mistake ++
-        if (this.mistake === 5) {
-          alert('Total Score: ' + this.score + '! Try again!')
+
+        if (this.mistake === 2) {
+          alert('GAME OVER! Total Score: ' + this.score + '! Try again!')
           this.gameOver()
         }
       }
@@ -66,6 +71,7 @@ var game = {
 
   levelUp: function () {
     this.timer *= 0.98
+    this.moleAppearTime *= 0.98
   },
 
   gameOver: function () {
@@ -77,6 +83,12 @@ $(document).ready(function () {
   game.startGame()
 
   $(document).keypress((event) => {
-    game.checkScore(event.key)
+    var holeIds = $('.holes div[id]')         // find spans with ID attribute
+                  .map(function () { return this.id }) // convert to set of IDs
+                  .get()
+
+    if (holeIds.includes(event.key)) {
+      game.checkScore(event.key)
+    }
   })
 })
