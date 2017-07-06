@@ -11,13 +11,16 @@ var game = {
   mistake: 0,
   clickable: true,
   $hole: '',
-  timer: 500,
+  // timer: 1500,
 
   startGame: function () {
     this.startBtn.on('click', () => {
-      setInterval(this.gRandomMole.bind(this), this.timer)
-      console.log(this.timer)
+      this.startTimeInterval(1500)
     })
+  },
+
+  startTimeInterval: function (time) {
+    this.timeInterval = setInterval(this.gRandomMole.bind(this), time)
   },
 
   gRandomMole: function () {
@@ -48,9 +51,9 @@ var game = {
   },
 
   levelUp: function () {
-    if (this.score > 3) {
-      this.timer = 0
-      console.log('levelUp timer: ' + this.timer)
+    if (this.score >= 5) {
+      clearInterval(this.timeInterval)
+      this.startTimeInterval(500)
     }
   }
 }
