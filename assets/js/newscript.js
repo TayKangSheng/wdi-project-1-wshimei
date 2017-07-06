@@ -49,7 +49,6 @@ var game = {
 
   checkScore: function (keyPress) {
     if (this.clickable === true) {
-      console.log(this.$hole.attr('id'))
       if (this.$hole.attr('id') === keyPress) {
         this.clickable = false
         this.ouch.removeClass('hidden')
@@ -83,8 +82,8 @@ $(document).ready(function () {
   game.startGame()
 
   $(document).keypress((event) => {
-    var holeIds = $('.holes div[id]')         // find spans with ID attribute
-                  .map(function () { return this.id }) // convert to set of IDs
+    var holeIds = $('.holes div[id]')                   // find divs with ID attribute
+                  .map(function () { return this.id })  // convert to set of IDs
                   .get()
 
     if (holeIds.includes(event.key)) {
