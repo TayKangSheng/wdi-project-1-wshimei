@@ -5,22 +5,22 @@ var game = {
   mole: $('.mole'),
   scoreboard: $('.scoreboard'),
   holes: $('.holeBackground'),
-  levelCounter: $('.levelCounter'),
   // ouch: $('.ouch'),
   score: 0,
   mistake: 0,
   clickable: true,
   $hole: '',
-  // timer: 1500,
+  timer: 1500,
 
   startGame: function () {
     this.startBtn.on('click', () => {
-      this.startTimeInterval(1500)
+      this.startTimeOut()
     })
   },
 
-  startTimeInterval: function (time) {
-    this.timeInterval = setInterval(this.gRandomMole.bind(this), time)
+  startTimeOut: function () {
+    console.log('timer now is', this.timer)
+    setTimeout(this.gRandomMole.bind(this), this.timer)
   },
 
   gRandomMole: function () {
@@ -30,6 +30,8 @@ var game = {
     this.mole.toggleClass('hidden')
     this.mole.appendTo(this.$hole)
     this.clickable = true
+
+    this.startTimeOut()
   },
 
   checkScore: function (holeId) {
@@ -38,7 +40,6 @@ var game = {
         this.clickable = false
         this.score ++
         this.scoreboard.text('Score: ' + this.score)
-        this.levelUp()
         // this.ouch.removeClass('.hidden')
         // this.ouch.appendTo(this.$hole)
       } else {
@@ -47,14 +48,12 @@ var game = {
           alert('Total Score: ' + this.score + '! Try again!')
         }
       }
+      this.levelUp()
     }
   },
 
   levelUp: function () {
-    if (this.score >= 5) {
-      clearInterval(this.timeInterval)
-      this.startTimeInterval(500)
-    }
+    this.timer *= 0.95
   }
 }
 
