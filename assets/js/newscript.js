@@ -1,11 +1,11 @@
-/* global $ alert */
+/* global $ alert location */
 
 var game = {
   startBtn: $('.startBtn'),
   mole: $('.mole'),
   scoreboard: $('.scoreboard'),
   holes: $('.holeBackground'),
-  // ouch: $('.ouch'),
+  ouch: $('.ouch'),
   score: 0,
   mistake: 0,
   clickable: true,
@@ -19,16 +19,26 @@ var game = {
   },
 
   startTimeOut: function () {
-    console.log('timer now is', this.timer)
     setTimeout(this.gRandomMole.bind(this), this.timer)
+    this.removeMole()
+  },
+
+  removeMole: function () {
+    setTimeout(() => {
+      this.mole.addClass('hidden animated slideInDown')
+    }, this.timer - 500)
   },
 
   gRandomMole: function () {
     var index = Math.floor(Math.random() * 7)
     this.$hole = $('#' + $(this.holes[index]).attr('id'))
 
-    this.mole.toggleClass('hidden')
+    this.mole.removeClass('hidden').addClass('animated slideInUp')
     this.mole.appendTo(this.$hole)
+
+    this.ouch.addClass('hidden')
+    this.ouch.appendTo(this.$hole.parent())
+
     this.clickable = true
 
     this.startTimeOut()
@@ -38,14 +48,16 @@ var game = {
     if (this.clickable === true) {
       if (this.$hole.attr('id') === holeId) {
         this.clickable = false
+        this.ouch.removeClass('hidden')
+        this.mole.addClass('hidden animated slideInDown')
+
         this.score ++
         this.scoreboard.text('Score: ' + this.score)
-        // this.ouch.removeClass('.hidden')
-        // this.ouch.appendTo(this.$hole)
       } else {
         this.mistake ++
         if (this.mistake === 5) {
           alert('Total Score: ' + this.score + '! Try again!')
+          this.gameOver()
         }
       }
       this.levelUp()
@@ -53,7 +65,11 @@ var game = {
   },
 
   levelUp: function () {
-    this.timer *= 0.95
+    this.timer *= 0.98
+  },
+
+  gameOver: function () {
+    location.reload()
   }
 }
 

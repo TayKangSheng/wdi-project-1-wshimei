@@ -92,15 +92,18 @@ button:hover {
 
 .mole.hidden {
   /*display: none;*/
-  transition: bottom 0.3s linear;
+  /*transition: bottom 0.3s linear;*/
 	bottom: -90%;
+  -vendor-animation-duration: 0.1s;
+  -vendor-animation-delay: 0.1s;
+  -vendor-animation-iteration-count: infinite;
 }
 
 .ouch {
   width: 100px;
   height: 100px;
   position: absolute;
-  bottom: 50px;
+  bottom: 65px;
   z-index: 6;
 }
 
